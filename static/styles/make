@@ -1,0 +1,5 @@
+#/bin/bash
+echo "Compiling CSS..."
+sass --compass --sourcemap \
+./style.scss:./style.css \
+$@
