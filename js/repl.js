@@ -7,7 +7,7 @@ function repl($container) {
 
   function ready(EVAL, ctx) {
     evl = EVAL
-    jqconsole = $container.jqconsole('Welcome\n', '>> ')
+    jqconsole = $container.jqconsole(null, '>> ')
     do_prompt()
   }
 
@@ -18,8 +18,6 @@ function repl($container) {
 
         if (result !== undefined)
           jqconsole.Write(JSON.stringify(result) + '\n', 'jqconsole-output')
-        else
-          jqconsole.Write(result + '\n', 'jqconsole-undefined')
 
       } catch (ex) {
         jqconsole.Write("ERROR: " + ex + '\n', 'jqconsole-error')

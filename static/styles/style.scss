@@ -1,0 +1,199 @@
+@import "compass";
+
+$RATIO: 1.75;
+
+$container-width: 1200px;
+$container-gutter: 80px;
+
+$repls-bg: rgba(#ecf0f4, 0.6);
+
+$repls-width: ($container-width / $RATIO) - $container-gutter;
+$prose-width: ($container-width - $repls-width);
+
+$heading-color: #112;
+
+$console-padding: 20px;
+$console-width: $repls-width - ($console-padding * 2);
+$console-height: 300px;
+$console-bg: #fff;
+$console-input: #34495e;
+$console-prompt: $console-input;
+$console-error: #e74c3c;
+$console-cursor: #2ecc71;
+
+body {
+    background: #fff;
+    font-family: "Helvetica Neue", "Helvetica", sans-serif;
+}
+
+h1, h2, h3 {
+    color: $heading-color;
+
+    small {
+        font-size: 0.675em;
+        color: rgba($heading-color, 0.33);
+        font-weight: normal;
+    }
+}
+
+p {
+    color: #333;
+    padding-right: floor($container-gutter / 3);
+}
+
+.inner p:not(:first-of-type),
+.inner pre {
+    margin-top: 1.5em;
+}
+
+section {
+    margin: 0;
+    padding: 0;
+}
+
+
+/* Typography generated using http://lamb.cc/typograph/ */
+body { font-size:100%; line-height:1.33333; }
+h1, h2, h3 { margin-top:0; margin-bottom:0; }
+h1 { font-size:2.61538em; }
+h1, h3 { padding:1.37228em 0; }
+h2 { font-size:1.61538em; padding:1.39659em 0; }
+h3 { font-size:1.30769em; }
+p { margin: 0; }
+h3 { text-transform:uppercase; font-weight:normal; letter-spacing:2px; }
+
+
+
+
+/*******************************************************************************
+* Main Layout
+*/
+
+body {
+    padding: 0;
+    background: $repls-bg;
+}
+
+.prose, .repls {
+    padding: 20px 0;
+    position: absolute;
+    top: 0;
+
+    min-height: 100%;
+}
+
+.prose {
+    left: 0;
+    background: #fff;
+
+    .inner {
+        width: $prose-width;
+        padding-left: $container-gutter / 2;
+        padding-right: $container-gutter / 2;
+    }
+}
+
+.repls {
+    left: $prose-width;
+
+    .inner {
+        width: $repls-width;
+        padding-left: $container-gutter / 2;
+    }
+}
+
+
+
+/*******************************************************************************
+* REPL
+*/
+
+.repl {
+    font-family: "Source Code Pro", monospace;
+    position: relative;
+    width: $console-width;
+    height: $console-height;
+
+    font-size: 13px;
+
+    &:empty {
+        background: $console-bg url(/loading.gif) center center no-repeat;
+    }
+}
+
+.jqconsole {
+    background: $console-bg;
+    padding: 20px;
+    outline: 1px solid darken($repls-bg, 10%);
+    outline-offset: -1px;
+    @include box-shadow(0 5px 9px rgba(#002, 0.05));
+
+}
+
+.jqconsole-cursor {
+    background: $console-cursor;
+
+    -webkit-animation: blink 2s linear 0s infinite;
+      -moz-animation: blink 2s linear 0s infinite;
+      -ms-animation: blink 2s linear 0s infinite;
+      -o-animation: blink 2s linear 0s infinite;
+}
+
+.jqconsole-blurred {
+    background: rgba($console-bg, 0.5);
+    outline-color: darken($repls-bg, 7%);
+
+    @include transition(all 0.2s);
+
+    @include box-shadow(inset 0 3px 8px rgba(#000, 0.03),
+                              0 1px rgba(#fff, 1));
+
+    span {
+        @include opacity(0.60);
+    }
+
+    .jqconsole-cursor {
+        -webkit-animation: none;
+          -moz-animation: none;
+          -ms-animation: none;
+          -o-animation: none;
+
+        background: none;
+        outline: 1px solid $console-cursor;
+        outline-offset: -1px;
+    }
+}
+
+.jqconsole-prompt {
+    color: $console-prompt;
+}
+
+.jqconsole-old-prompt {
+    @include opacity(0.75);
+}
+
+.jqconsole-input {
+    color: $console-input;
+}
+
+.jqconsole-old-input {
+    @include opacity(0.75);
+    font-weight: normal;
+}
+
+.jqconsole-output {
+    color: $console-input;
+}
+
+.jqconsole-error {
+    color: $console-error;
+}
+
+
+
+
+@-webkit-keyframes blink {
+  0%   { @include opacity(0.1); }
+  50%  { @include opacity(1); }
+  100%  { @include opacity(0.1); }
+}

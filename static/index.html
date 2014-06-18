@@ -2,70 +2,39 @@
 <html>
     <head>
         <title>REPL test</title>
+        <link href="/styles/bootstrap.css" rel="stylesheet">
         <link href="/styles/style.css" rel="stylesheet">
-        <style>
-    html, body {
-      color: white;
-      font-family: monospace;
-      margin: 0;
-      padding: 0;
-    }
-    /* The console container element */
-    #r1 {
-      height: 400px;
-      width: 750px;
-      position:relative;
-      background-color: black;
-      border: 2px solid #CCC;
-      margin: 0 auto;
-      margin-top: 50px;
-    }
-    /* The inner console element. */
-    .jqconsole {
-        padding: 10px;
-    }
-    /* The cursor. */
-    .jqconsole-cursor {
-        background-color: gray;
-    }
-    /* The cursor color when the console looses focus. */
-    .jqconsole-blurred .jqconsole-cursor {
-        background-color: #666;
-    }
-    /* The current prompt text color */
-    .jqconsole-prompt {
-        color: #0d0;
-    }
-    /* The command history */
-    .jqconsole-old-prompt {
-        color: #0b0;
-        font-weight: normal;
-    }
-    /* The text color when in input mode. */
-    .jqconsole-input {
-        color: #dd0;
-    }
-    /* Previously entered input. */
-    .jqconsole-old-input {
-        color: #bb0;
-        font-weight: normal;
-    }
-    /* The text color of the output. */
-    .jqconsole-output {
-        color: white;
-    }
-    .jqconsole-undefined {
-        color: #555;
-    }
-    .jqconsole-error {
-        color: red;
-    }
-        </style>
     </head>
 
     <body>
 
-        <div id="r1"></div>
+        <div class="prose">
+            <div class="inner">
+                <h1>Functions <small>(are awesome)</small></h1>
+                <p>Functions are mini-programs that you give
+                    a name to. Then, you can run them again &amp; again, just by
+                    calling their name.</p>
+                <p>Let's take a peek&hellip;</p>
+
+                <section id="create-a-function">
+                    <h2>Creating &amp; Calling a Function</h2>
+                    <p>Let's make a function called <code>shinerdog</code> that
+                        prints out "woooof!" every time we call it.</p>
+                    <pre>
+function shinerdog() {
+    console.log("WOOOOF!")
+}</pre>
+                    <p>That's it! Pretty simple, no? Now let's try calling it
+                        &amp; seeing what happens.</p>
+                </section>
+            </div>
+        </div>
+
+        <div class="repls">
+            <div class="inner">
+                <div id="r1" class="repl"></div>
+            </div>
+        </div>
 
         <script src="//cdn.jsdelivr.net/jquery/2.1.1/jquery.min.js"></script>
         <script src="https://rawgit.com/replit/jq-console/master/jqconsole.min.js"></script>
