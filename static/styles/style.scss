@@ -12,7 +12,7 @@ $prose-width: ($container-width - $repls-width);
 
 $heading-color: #112;
 
-$console-padding: 20px;
+$console-padding: 10px;
 $console-width: $repls-width - ($console-padding * 2);
 $console-height: 300px;
 $console-bg: #fff;
@@ -116,6 +116,10 @@ body {
 
     font-size: 13px;
 
+    overflow: visible;
+
+    @include box-shadow(0 5px 9px rgba(#002, 0.05));
+
     &:empty {
         background: $console-bg url(/loading.gif) center center no-repeat;
     }
@@ -123,11 +127,9 @@ body {
 
 .jqconsole {
     background: $console-bg;
-    padding: 20px;
-    outline: 1px solid darken($repls-bg, 10%);
+    padding: $console-padding;
+    outline: 1px solid darken($repls-bg, 7.5%);
     outline-offset: -1px;
-    @include box-shadow(0 5px 9px rgba(#002, 0.05));
-
 }
 
 .jqconsole-cursor {
@@ -140,17 +142,8 @@ body {
 }
 
 .jqconsole-blurred {
-    background: rgba($console-bg, 0.5);
-    outline-color: darken($repls-bg, 7%);
-
+    @include opacity(0.85);
     @include transition(all 0.2s);
-
-    @include box-shadow(inset 0 3px 8px rgba(#000, 0.03),
-                              0 1px rgba(#fff, 1));
-
-    span {
-        @include opacity(0.60);
-    }
 
     .jqconsole-cursor {
         -webkit-animation: none;
@@ -165,7 +158,11 @@ body {
 }
 
 .jqconsole-prompt {
+    display: block;
+    background: rgba(#00f, 0.005);
     color: $console-prompt;
+    outline: 1px solid rgba(#00f, 0.015);
+    outline-offset: -1px;
 }
 
 .jqconsole-old-prompt {
@@ -187,6 +184,16 @@ body {
 
 .jqconsole-error {
     color: $console-error;
+}
+
+.jqconsole-prompt,
+.jqconsole-old-prompt,
+.jqconsole-input,
+.jqconsole-old-input,
+.jqconsole-output,
+.jqconsole-error {
+    display: block;
+    padding: 2px;
 }
 
 

@@ -84,20 +84,21 @@ body {
 .repl {
   font-family: "Source Code Pro", monospace;
   position: relative;
-  width: 565.71429px;
+  width: 585.71429px;
   height: 300px;
-  font-size: 13px; }
+  font-size: 13px;
+  overflow: visible;
+  -moz-box-shadow: 0 5px 9px rgba(0, 0, 34, 0.05);
+  -webkit-box-shadow: 0 5px 9px rgba(0, 0, 34, 0.05);
+  box-shadow: 0 5px 9px rgba(0, 0, 34, 0.05); }
   .repl:empty {
     background: white url(/loading.gif) center center no-repeat; }
 
 .jqconsole {
   background: white;
-  padding: 20px;
-  outline: 1px solid rgba(204, 214, 225, 0.6);
-  outline-offset: -1px;
-  -moz-box-shadow: 0 5px 9px rgba(0, 0, 34, 0.05);
-  -webkit-box-shadow: 0 5px 9px rgba(0, 0, 34, 0.05);
-  box-shadow: 0 5px 9px rgba(0, 0, 34, 0.05); }
+  padding: 10px;
+  outline: 1px solid rgba(212, 221, 230, 0.6);
+  outline-offset: -1px; }
 
 .jqconsole-cursor {
   background: #2ecc71;
@@ -107,18 +108,12 @@ body {
   -o-animation: blink 2s linear 0s infinite; }
 
 .jqconsole-blurred {
-  background: rgba(255, 255, 255, 0.5);
-  outline-color: rgba(213, 222, 231, 0.6);
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=85);
+  opacity: 0.85;
   -moz-transition: all 0.2s;
   -o-transition: all 0.2s;
   -webkit-transition: all 0.2s;
-  transition: all 0.2s;
-  -moz-box-shadow: inset 0 3px 8px rgba(0, 0, 0, 0.03), 0 1px white;
-  -webkit-box-shadow: inset 0 3px 8px rgba(0, 0, 0, 0.03), 0 1px white;
-  box-shadow: inset 0 3px 8px rgba(0, 0, 0, 0.03), 0 1px white; }
-  .jqconsole-blurred span {
-    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=60);
-    opacity: 0.6; }
+  transition: all 0.2s; }
   .jqconsole-blurred .jqconsole-cursor {
     -webkit-animation: none;
     -moz-animation: none;
@@ -129,7 +124,11 @@ body {
     outline-offset: -1px; }
 
 .jqconsole-prompt {
-  color: #34495e; }
+  display: block;
+  background: rgba(0, 0, 255, 0.005);
+  color: #34495e;
+  outline: 1px solid rgba(0, 0, 255, 0.015);
+  outline-offset: -1px; }
 
 .jqconsole-old-prompt {
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=75);
@@ -148,6 +147,15 @@ body {
 
 .jqconsole-error {
   color: #e74c3c; }
+
+.jqconsole-prompt,
+.jqconsole-old-prompt,
+.jqconsole-input,
+.jqconsole-old-input,
+.jqconsole-output,
+.jqconsole-error {
+  display: block;
+  padding: 2px; }
 
 @-webkit-keyframes blink {
   0% {

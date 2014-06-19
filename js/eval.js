@@ -1,7 +1,16 @@
 ;(function() {
 
 
-window.EVAL = function(str) {
+
+window.EVAL = function(jqconsole, str) {
+
+  // capture console output & print in our console instead
+  window.console.log = function() {
+    for (var i=0, len=arguments.length; i<len; i++) {
+      jqconsole.Write(arguments[i] + '\n', 'jqconsole-output')
+    }
+  }
+
   var result = eval.call(window, str)
   var newKeys = Object.keys(window)
 
