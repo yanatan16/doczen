@@ -83,9 +83,10 @@ body {
 */
 .repl {
   font-family: "Source Code Pro", monospace;
-  position: relative;
   width: 585.71429px;
   height: 300px;
+  position: absolute;
+  left: 40px;
   font-size: 13px;
   overflow: visible;
   -moz-box-shadow: 0 5px 9px rgba(0, 0, 34, 0.05);
@@ -108,12 +109,13 @@ body {
   -o-animation: blink 2s linear 0s infinite; }
 
 .jqconsole-blurred {
-  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=85);
-  opacity: 0.85;
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=75);
+  opacity: 0.75;
   -moz-transition: all 0.2s;
   -o-transition: all 0.2s;
   -webkit-transition: all 0.2s;
-  transition: all 0.2s; }
+  transition: all 0.2s;
+  cursor: pointer; }
   .jqconsole-blurred .jqconsole-cursor {
     -webkit-animation: none;
     -moz-animation: none;
@@ -122,13 +124,40 @@ body {
     background: none;
     outline: 1px solid #2ecc71;
     outline-offset: -1px; }
+  .jqconsole-blurred:hover {
+    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=90);
+    opacity: 0.9;
+    -moz-transition: none;
+    -o-transition: none;
+    -webkit-transition: none;
+    transition: none; }
+  .jqconsole-blurred:after {
+    content: "Click to Activate";
+    position: absolute;
+    height: 1em;
+    top: 50%;
+    margin-top: -0.5em;
+    left: 0;
+    width: 100%;
+    font-size: 2em;
+    font-family: Helvetica, sans-serif;
+    font-weight: 300;
+    text-align: center;
+    letter-spacing: 1px;
+    color: rgba(0, 0, 0, 0.1);
+    text-transform: uppercase; }
 
 .jqconsole-prompt {
   display: block;
   background: rgba(0, 0, 255, 0.005);
   color: #34495e;
   outline: 1px solid rgba(0, 0, 255, 0.015);
-  outline-offset: -1px; }
+  outline-offset: -1px;
+  cursor: text; }
+  .jqconsole-blurred .jqconsole-prompt {
+    cursor: pointer;
+    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50);
+    opacity: 0.5; }
 
 .jqconsole-old-prompt {
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=75);

@@ -110,9 +110,11 @@ body {
 
 .repl {
     font-family: "Source Code Pro", monospace;
-    position: relative;
     width: $console-width;
     height: $console-height;
+
+    position: absolute;
+    left: $container-gutter / 2;
 
     font-size: 13px;
 
@@ -142,8 +144,10 @@ body {
 }
 
 .jqconsole-blurred {
-    @include opacity(0.85);
+    @include opacity(0.75);
     @include transition(all 0.2s);
+
+    cursor: pointer;
 
     .jqconsole-cursor {
         -webkit-animation: none;
@@ -155,6 +159,32 @@ body {
         outline: 1px solid $console-cursor;
         outline-offset: -1px;
     }
+
+    &:hover {
+        @include opacity(0.9);
+        @include transition(none);
+    }
+
+    &:after {
+        content: "Click to Activate";
+
+        position: absolute;
+        height: 1em;
+        top: 50%;
+        margin-top: -0.5em;
+        left: 0;
+
+        width: 100%;
+
+        font-size: 2em;
+        font-family: Helvetica, sans-serif;
+        font-weight: 300;
+        text-align: center;
+        letter-spacing: 1px;
+        color: rgba(#000, 0.1);
+
+        text-transform: uppercase;
+    }
 }
 
 .jqconsole-prompt {
@@ -163,6 +193,12 @@ body {
     color: $console-prompt;
     outline: 1px solid rgba(#00f, 0.015);
     outline-offset: -1px;
+    cursor: text;
+
+    .jqconsole-blurred & {
+        cursor: pointer;
+        @include opacity(0.5);
+    }
 }
 
 .jqconsole-old-prompt {
