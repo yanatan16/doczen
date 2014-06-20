@@ -19,7 +19,8 @@ p {
 
 section {
   margin: 0;
-  padding: 0; }
+  padding: 0;
+  position: relative; }
 
 /* Typography generated using http://lamb.cc/typograph/ */
 body {
@@ -86,7 +87,7 @@ body {
   width: 585.71429px;
   height: 300px;
   position: absolute;
-  left: 40px;
+  left: 634.28571px;
   font-size: 13px;
   overflow: visible;
   -moz-box-shadow: 0 5px 9px rgba(0, 0, 34, 0.05);

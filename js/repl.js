@@ -1,4 +1,4 @@
-var $replContainer = $('.repls')
+var $replContainer = $('body')
 
 
 function repl() {
