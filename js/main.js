@@ -3,6 +3,8 @@ var repl = require('./repl')
 var $doc = $(document)
   , $replsContainer = $('.repls')
 
+var PAD = 40
+
 
 $('.has-repl').each(function(ind, sect) {
   var $sect = $(sect)
@@ -16,36 +18,28 @@ $('.has-repl').each(function(ind, sect) {
     , B = T + $sect.height() - $topEl.position().top
 
   window.WAT = {}
-  WAT.topel = $topEl
-  WAT.T = T
-  WAT.B = B
-  WAT.tpos = $topEl.position().top
 
   $doc.on('scroll', function(evt) {
     var ST = $doc.scrollTop()
       , h = $container.height()
 
-    if (ST < T) {
+    if (ST < T - PAD) {
       if ($container.css('position') != 'absolute')
         $container.css({
-           top: ST
-          ,left: null
+           top: T
           ,position: 'absolute'
         })
 
-    } else if ((ST + h) < B) {
+    } else if ((ST + h + PAD) < B) {
       if ($container.css('position') != 'fixed')
         $container.css({
-           top: 0
-          ,left: $replsContainer.offset().left + 40
+           top: PAD
           ,position: 'fixed'
         })
 
-    } else if ((ST + h) >= B) {
-      debugger
+    } else if ((ST + h + PAD) >= B) {
       $container.css({
          top: B - h
-        ,left: null
         ,position: 'absolute'
       })
     }

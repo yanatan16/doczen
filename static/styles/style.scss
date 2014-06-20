@@ -112,7 +112,7 @@ body {
 .repl {
     font-family: "Source Code Pro", monospace;
     width: $console-width;
-    height: $console-height;
+    min-height: $console-height;
 
     position: absolute;
     left: $prose-width + ($container-gutter / 2);

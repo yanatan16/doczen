@@ -85,7 +85,7 @@ body {
 .repl {
   font-family: "Source Code Pro", monospace;
   width: 585.71429px;
-  height: 300px;
+  min-height: 300px;
   position: absolute;
   left: 634.28571px;
   font-size: 13px;
