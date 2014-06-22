@@ -9,11 +9,21 @@ var PAD = 40
 $('.has-repl').each(function(ind, sect) {
   var $sect = $(sect)
     , $topEl = $sect.find(':not(h1,h2,h3)').first()
-    , $container = repl()
+    , $repl = repl()
 
-  $container.css('top', $topEl.offset().top)
+  $repl.css('top', $topEl.offset().top)
 
+  make_sticky($sect, $topEl, $repl)
+  $sect.data('$repl', $repl)
   
+  // dirty hack
+  setTimeout(function() {
+    $repl.find('.jqconsole').addClass('jqconsole-blurred')
+  }, 100)
+})
+
+
+function make_sticky($sect, $topEl, $repl) {
   var T = $topEl.offset().top
     , B = T + $sect.height() - $topEl.position().top
 
@@ -21,33 +31,28 @@ $('.has-repl').each(function(ind, sect) {
 
   $doc.on('scroll', function(evt) {
     var ST = $doc.scrollTop()
-      , h = $container.height()
+      , h = $repl.height()
 
     if (ST < T - PAD) {
-      if ($container.css('position') != 'absolute')
-        $container.css({
+      if ($repl.css('position') != 'absolute')
+        $repl.css({
            top: T
           ,position: 'absolute'
         })
 
     } else if ((ST + h + PAD) < B) {
-      if ($container.css('position') != 'fixed')
-        $container.css({
+      if ($repl.css('position') != 'fixed')
+        $repl.css({
            top: PAD
           ,position: 'fixed'
         })
 
     } else if ((ST + h + PAD) >= B) {
-      $container.css({
+      $repl.css({
          top: B - h
         ,position: 'absolute'
       })
     }
   })
+}
 
-
-  // dirty hack
-  setTimeout(function() {
-    $container.find('.jqconsole').addClass('jqconsole-blurred')
-  }, 100)
-})
