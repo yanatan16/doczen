@@ -43,7 +43,7 @@ function repl() {
 
   function _multiline_cb(input) {
     try {
-      var result = evl(input)
+      var result = evl(input, true)
       return false
     } catch (ex) {
       var str = '' + ex

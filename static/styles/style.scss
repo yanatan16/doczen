@@ -1,6 +1,6 @@
 @import "compass";
 
-$RATIO: 1.75;
+$RATIO: 1.8;
 
 $container-width: 1200px;
 $container-gutter: 80px;
@@ -17,6 +17,7 @@ $console-width: $repls-width - ($console-padding * 2);
 $console-height: 300px;
 $console-bg: #fff;
 $console-input: #34495e;
+$console-output: #16a085;
 $console-prompt: $console-input;
 $console-error: #e74c3c;
 $console-cursor: #2ecc71;
@@ -117,7 +118,7 @@ body {
     position: absolute;
     left: $prose-width + ($container-gutter / 2);
 
-    font-size: 13px;
+    font-size: 12px;
 
     overflow: visible;
 
@@ -216,7 +217,7 @@ body {
 }
 
 .jqconsole-output {
-    color: $console-input;
+    color: $console-output;
 }
 
 .jqconsole-error {

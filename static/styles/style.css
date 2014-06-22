@@ -69,14 +69,14 @@ body {
   left: 0;
   background: #fff; }
   .prose .inner {
-    width: 594.28571px;
+    width: 613.33333px;
     padding-left: 40px;
     padding-right: 40px; }
 
 .repls {
-  left: 594.28571px; }
+  left: 613.33333px; }
   .repls .inner {
-    width: 605.71429px;
+    width: 586.66667px;
     padding-left: 40px; }
 
 /*******************************************************************************
@@ -84,11 +84,11 @@ body {
 */
 .repl {
   font-family: "Source Code Pro", monospace;
-  width: 585.71429px;
+  width: 566.66667px;
   min-height: 300px;
   position: absolute;
-  left: 634.28571px;
-  font-size: 13px;
+  left: 653.33333px;
+  font-size: 12px;
   overflow: visible;
   -moz-box-shadow: 0 5px 9px rgba(0, 0, 34, 0.05);
   -webkit-box-shadow: 0 5px 9px rgba(0, 0, 34, 0.05);
@@ -173,7 +173,7 @@ body {
   font-weight: normal; }
 
 .jqconsole-output {
-  color: #34495e; }
+  color: #16a085; }
 
 .jqconsole-error {
   color: #e74c3c; }
