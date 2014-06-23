@@ -23,6 +23,28 @@ $('.has-repl').each(function(ind, sect) {
 })
 
 
+$('.runnable').each(make_runnable)
+
+
+function make_runnable(ind, code) {
+  var $code = $(code)
+    , $btn = $('<button class="run-code">&#9654;</button>')
+
+  $code.wrap('<div style="position:relative">')
+  $code.parent().append($btn)
+
+  $btn.on('click', function(evt) {
+    // a bit hacky, but it works
+    var $input = $(this).closest('section').data('$repl').find('textarea')
+      , src = $code.html().trim()
+
+    $input
+      .text(src)
+      .val(src)
+      .trigger('paste')
+  })
+}
+
 function make_sticky($sect, $topEl, $repl) {
   var T = $topEl.offset().top
     , B = T + $sect.height() - $topEl.position().top

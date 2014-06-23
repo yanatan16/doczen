@@ -80,6 +80,18 @@ body {
     padding-left: 40px; }
 
 /*******************************************************************************
+* Prose
+*/
+.run-code {
+  position: absolute;
+  right: 0;
+  top: 0;
+  margin-top: 5px;
+  margin-right: 5px;
+  font-size: 0.5em;
+  padding-top: 3px; }
+
+/*******************************************************************************
 * REPL
 */
 .repl {

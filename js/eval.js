@@ -1,20 +1,20 @@
 ;(function() {
 
+var noop = function(){}
+var silent_obj = {alert:noop, prompt:noop, console:{log:noop}}
+
 
 
 window.EVAL = function(jqconsole, str, silent) {
 
   // capture console output & print in our console instead
   window.console.log = function() {
-    if (silent)
-      return;
-
     for (var i=0, len=arguments.length; i<len; i++) {
       jqconsole.Write(arguments[i] + '\n', 'jqconsole-output jqconsole-log')
     }
   }
 
-  var result = eval.call(silent ? {} : window, str)
+  var result = eval.call(silent ? silent_obj : window, str)
   var newKeys = Object.keys(window)
 
   _empty(window.__context__)
