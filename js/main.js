@@ -3,12 +3,20 @@ var repl = require('./repl')
 var $doc = $(document)
   , $replsContainer = $('.repls')
 
+var editable_tabindex = 0
+
 var PAD = 40
 
 
+$('.runnable').each(make_runnable)
+$('.highlight').each(highlight)
+
+
+// Doing this after make_runnable matters, because make_runnable
+// trims blank lines from <pre> elements, changing the content height.
 $('.has-repl').each(function(ind, sect) {
   var $sect = $(sect)
-    , $topEl = $sect.find(':not(h1,h2,h3)').first()
+    , $topEl = $sect.find('h1+p, h2+p, h3+p, h1+pre, h2+pre, h3+pre').first()
     , $repl = repl()
 
   $repl.css('top', $topEl.offset().top)
@@ -22,9 +30,6 @@ $('.has-repl').each(function(ind, sect) {
   }, 100)
 })
 
-
-$('.runnable').each(make_runnable)
-$('.highlight').each(highlight)
 
 
 function make_runnable(ind, code) {
@@ -47,12 +52,17 @@ function make_runnable(ind, code) {
       .trigger('paste')
   })
 
-  $code.find('span[contenteditable="true"]').on('focus', function() {
+  var $editable = $code.find('span[contenteditable="true"]')
+  $editable.on('focus', function() {
     var $tag = $(this)
 
     setTimeout(function() {
       $tag.selectText()
     }, 50)
+  })
+
+  $editable.each(function(i, ed) {
+    $(ed).attr('tabindex', ++editable_tabindex)
   })
 }
 

@@ -39,7 +39,7 @@ function shinerdog() {
                         <pre class="runnable">shinerdog()</pre></p>
 
                     <p>Damn dog is always howling at people
-                        <span class="smile">:)</span> <br/>
+                        <span class="smile"></span> <br/>
                         Let's make another function to tell him to stop:
                         <pre class="runnable">
 function shut_up_shiner() {
@@ -49,7 +49,10 @@ function shut_up_shiner() {
                     </p>
 
                     <p>Tell him what's up:
-                        <pre class="runnable">shut_up_shiner()</pre>
+                        <pre class="runnable">
+shinerdog()
+shut_up_shiner()
+                        </pre>
                     </p>
 
                     <p><small>*shiner slinks away &amp; curls up in a chair*</small></p>
@@ -57,7 +60,7 @@ function shut_up_shiner() {
                     <section>
                         <blockquote>
                             <h3>A less annoying <code>alert()</code></h3>
-                            <p><code>alert()</code> is just function like any other,
+                            <p><code>alert()</code> is just a function like any other,
                                 but it's one that comes
                                 built-into the web browser. We can call <code>alert()</code> 
                                 anytime we want to display something, but that popup 
@@ -145,7 +148,7 @@ greet_guest("Mike Jones", 37)
                         than 37.</p>
                     <p><em>*sigh*</em> &mdash; Good help is hard to find. But
                         luckily, unlike people, we can easily make our program smarter 
-                        <span class="smile">:)</span></p>
+                        <span class="smile"></span></p>
                 </section>
 
                 <section id="outputs" class="has-repl">
@@ -174,24 +177,24 @@ console.log(not_pi + " is close enough to PI for me!")
                     <p>OK, let's see if we can make our stupid doorman a little bit
                         smarter. We want to make our guests feel good, so let's lie to 
                         them about how young they look. In fact, let's tell them they look
-                        <strong>a decade younger</strong> than they actually are. That'll butter 'em up.
-                        <span class="smile">:)</span></p>
+                        <strong>a decade younger</strong> than they actually are.
+                        Flattery will get you everywhere
+                        <span class="smile"></span></p>
                         
-                    <p>If Mike Jones is 37, we want 
-                        our doorman to say "You don't look a day over 27!"
-                        Flattery will get you everywhere.
-                    </p>
-
                     <p>To start with, we'll need a function that takes in a guest's real
-                        age as input, and returns their "fake age" as output.</p>
+                        age as input, and returns their "fake age" as output. So:</p>
+
+                    <p><code>fake_age(40)</code> should return <code>30</code>.<br/>
+                        <code>fake_age(34)</code> should return <code>24</code>.&nbsp;&nbsp;
+                        <em>etc&hellip;</em>
+                    </p>
                     
                     <p>A function can "return" a value by using the keyword
                         &hellip; wait for it &hellip; <code>return</code>. &nbsp;I know, 
                         <img width=25 src="http://3.bp.blogspot.com/-WpuYGqCEHDg/UBznzaqReKI/AAAAAAAAB_0/0Vc8_mnnhqw/s1600/mind-blown.gif">
                     </p>
 
-                    <p>Fill in the
-                        blank:
+                    <p>With all that in mind, fill in the missing part:
                         <pre class="runnable">
 function a_decade_less_than(real_age) {
     return <span contenteditable="true">             </span>
@@ -201,21 +204,28 @@ function a_decade_less_than(real_age) {
 
                     <p>And to test it out...
                         <pre class="runnable">
-console.log( a_decade_less_than(37) )
+a_decade_less_than(34)
                         </pre>
                     </p>
 
                     <p>Boosh! Now let's turn our doorman into a lying schmoozer.</p>
+
+                    <h3>Lies, Sweet Lies</h3>
                     
                     <p>We'll use our same <code>greet_guest</code> function from before,
-                        but this time it will use <code>fake_name()</code> to 
+                        but this time it will use a "fake age" to
                         flatter the guest:
                         <pre class="runnable">
 function greet_guest(guest_name, guest_age) {
     var fake_age = <span contenteditable="true">                             </span>
-    console.log("<span contenteditable=\"true\"">"Hi there, " + guest_name + "You don't look a day over " + fake_age</span>)
+    console.log("Hi there, " + <span contenteditable="true">          </span> + "!") 
+    console.log(<span contenteditable="true">                                       </span> + "!")
 }
                         </pre>
+
+                        <p>That's what I'm talking about. Now the guests will be in a
+                            good mood when we ask them for donations later
+                            <span class="smile">P</span></p>
                 </section>
 
                 <section class="final-spacer">
