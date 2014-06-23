@@ -3,6 +3,7 @@ var $replContainer = $('body')
 
 function repl() {
   var jqconsole, evl, ctx
+  var log = []
 
   var $container = $('<div class="repl">').appendTo($replContainer)
 
@@ -16,7 +17,7 @@ function repl() {
   function ready(EVAL, ctx) {
     jqconsole = $container.jqconsole(null, '>>> ', '... ', false, false)
 
-    evl = EVAL.bind(null, jqconsole)
+    evl = EVAL.bind(null, jqconsole, log)
     do_prompt()
   }
 
@@ -45,20 +46,19 @@ function repl() {
     }
 
     function _result_cb(input) {
-      if (has_result) {
-        _write(result)
-        has_result = false
-        result = undefined
-        return do_prompt()
-      }
-
       try {
-        result = evl(input)
+        has_result || (result = evl(input))
+
+        log.forEach(_.partial(_write, _, 'jqconsole-output jqconsole-log'))
         _write(result)
       } catch (ex) {
         _write('ERROR: ' + ex, 'jqconsole-error')
       }
+      
 
+      has_result = false
+      result = undefined
+      _empty(log)
       do_prompt()
     }
   }
@@ -71,6 +71,9 @@ function repl() {
   }
 }
 
+
+// TODO: this is copy/pasted from eval.js
+function _empty(arr) { while (arr.length) { arr.pop() } }
 
 
 

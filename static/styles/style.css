@@ -1,3 +1,44 @@
+/**
+ * GitHub theme
+ *
+ * @author Craig Campbell
+ * @version 1.0.4
+ */
+pre .comment {
+  color: #998; }
+
+pre .support {
+  color: #0086B3; }
+
+pre .tag, pre .tag-name {
+  color: navy; }
+
+pre .keyword, pre .css-property, pre .vendor-prefix, pre .sass, pre .class, pre .id, pre .css-value, pre .entity.function, pre .storage.function {
+  font-weight: bold; }
+
+pre .css-property, pre .css-value, pre .vendor-prefix, pre .support.namespace {
+  color: #333; }
+
+pre .constant.numeric, pre .keyword.unit, pre .hex-color {
+  font-weight: normal;
+  color: #099; }
+
+pre .entity.class {
+  color: #458; }
+
+pre .entity.id, pre .entity.function {
+  color: #900; }
+
+pre .attribute, pre .variable {
+  color: teal; }
+
+pre .string, pre .support.value {
+  font-weight: normal;
+  color: #d14; }
+
+pre .regexp {
+  color: #009926; }
+
 body {
   background: #fff;
   font-family: "Helvetica Neue", "Helvetica", sans-serif; }
@@ -13,19 +54,68 @@ p {
   color: #333;
   padding-right: 26px; }
 
-.inner p:not(:first-of-type),
+.inner p,
 .inner pre {
   margin-top: 1.5em; }
+
+.inner h1 + p,
+.inner h1 + pre,
+.inner h2 + p,
+.inner h2 + pre,
+.inner h3 + p,
+.inner h3 + pre {
+  margin-top: 0; }
+
+/** hack: this is done because putting a <div> for a .runnable
+          inside a <p> results in an empty paragraph, like:
+                <p>...</p><div>...</div><p></p>
+**/
+.inner p:empty + h1,
+.inner p:empty + h2,
+.inner p:empty + h3 {
+  margin-top: -10px; }
+
+.smile {
+  display: inline-block;
+  letter-spacing: 3px;
+  -moz-transform: rotate(90deg) translateX(2px);
+  -ms-transform: rotate(90deg) translateX(2px);
+  -webkit-transform: rotate(90deg) translateX(2px);
+  transform: rotate(90deg) translateX(2px);
+  margin-left: 5px;
+  font-size: 0.875em; }
+  .smile:first-letter {
+    font-weight: bold; }
 
 section {
   margin: 0;
   padding: 0;
   position: relative; }
 
+blockquote {
+  border-left: 3px solid #95a5a6;
+  margin-left: 10px;
+  margin-top: 2em;
+  display: block;
+  padding-left: 13px;
+  padding-bottom: 0.5em;
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=80);
+  opacity: 0.8; }
+  blockquote h3 {
+    padding-top: 0.25em; }
+
+tt {
+  background: #f8f9fc;
+  border: 1px solid rgba(0, 0, 136, 0.1);
+  padding: 3px;
+  -moz-border-radius: 2px;
+  -webkit-border-radius: 2px;
+  border-radius: 2px; }
+
 /* Typography generated using http://lamb.cc/typograph/ */
 body {
   font-size: 100%;
-  line-height: 1.33333; }
+  line-height: 1.4; }
 
 h1, h2, h3 {
   margin-top: 0;
@@ -48,7 +138,8 @@ p {
   margin: 0; }
 
 h3 {
-  text-transform: uppercase;
+  text-transform: lowercase;
+  font-variant: small-caps;
   font-weight: normal;
   letter-spacing: 2px; }
 
@@ -79,17 +170,36 @@ body {
     width: 586.66667px;
     padding-left: 40px; }
 
+.final-spacer {
+  height: 600px; }
+
 /*******************************************************************************
 * Prose
 */
+.runnable {
+  -moz-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.04);
+  -webkit-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.04);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.04); }
+  .runnable [contenteditable] {
+    outline: 1px dotted #aaa; }
+
 .run-code {
   position: absolute;
   right: 0;
   top: 0;
-  margin-top: 5px;
-  margin-right: 5px;
+  margin-top: 9px;
+  margin-right: 9px;
   font-size: 0.5em;
-  padding-top: 3px; }
+  padding-top: 3px;
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50);
+  opacity: 0.5; }
+  .run-code:hover {
+    filter: progid:DXImageTransform.Microsoft.Alpha(enabled=false);
+    opacity: 1;
+    -moz-transition: 0.2s;
+    -o-transition: 0.2s;
+    -webkit-transition: 0.2s;
+    transition: 0.2s; }
 
 /*******************************************************************************
 * REPL
@@ -104,9 +214,20 @@ body {
   overflow: visible;
   -moz-box-shadow: 0 5px 9px rgba(0, 0, 34, 0.05);
   -webkit-box-shadow: 0 5px 9px rgba(0, 0, 34, 0.05);
-  box-shadow: 0 5px 9px rgba(0, 0, 34, 0.05); }
+  box-shadow: 0 5px 9px rgba(0, 0, 34, 0.05);
+  -moz-transition: opacity 0.2s ease-in-out;
+  -o-transition: opacity 0.2s ease-in-out;
+  -webkit-transition: opacity 0.2s ease-in-out;
+  transition: opacity 0.2s ease-in-out; }
   .repl:empty {
     background: white url(/loading.gif) center center no-repeat; }
+  .repl.scrolled-past {
+    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=25);
+    opacity: 0.25;
+    -moz-transition: opacity 0.75s ease-in-out;
+    -o-transition: opacity 0.75s ease-in-out;
+    -webkit-transition: opacity 0.75s ease-in-out;
+    transition: opacity 0.75s ease-in-out; }
 
 .jqconsole {
   background: white;

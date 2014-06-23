@@ -5,12 +5,12 @@ var silent_obj = {alert:noop, prompt:noop, console:{log:noop}}
 
 
 
-window.EVAL = function(jqconsole, str, silent) {
+window.EVAL = function(jqconsole, log, str, silent) {
 
   // capture console output & print in our console instead
   window.console.log = function() {
     for (var i=0, len=arguments.length; i<len; i++) {
-      jqconsole.Write(arguments[i] + '\n', 'jqconsole-output jqconsole-log')
+      log.push(arguments[i])
     }
   }
 

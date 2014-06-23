@@ -25,42 +25,202 @@
                 <section id="create-a-function" class="has-repl">
                     <h2>Creating &amp; Calling a Function</h2>
                     <p>Let's make a function called <code>shinerdog</code> that
-                        barks every time we call it.</p>
-                    <p>Type this in the prompt on the right (&amp; hit enter):</p>
+                        howls annoyingly every time we call it.</p>
+                    <p>Type this in the prompt on the right 
+                        <small><em>(and press enter)</em></small>:</p>
                     <pre class="runnable">
 function shinerdog() {
-    alert("WOOOOF!")
-}</pre>
-                    <p>Nothing happened! [[MORE WORDS HERE]]</p>
-                    <p>Try typing this into the prompt :
+    alert("WOOOOooooOOoOOF!")
+}
+                    </pre>
+                    <p>Nothing happened! That's OK. All that did is tell the computer, <br/>
+                        "hey, I'm making this function called <code>shinerdog</code>".</p>
+                    <p>Now run the function by calling it:
                         <pre class="runnable">shinerdog()</pre></p>
-                    <p>Now run it again. And again.
-                        <em>(pro tip: press the up arrow to repeat your last command)</em></p>
-                    <p>In the past few months several new apps have let people pay to get reservations at restaurants where tables are in a great demand. Some essentially scalp reservations. With others, like Resy, the restaurants themselves sell reservations.  Are these services a useful way to let people get into popular restaurants, or are they just another way for restaurants to sell something that was once free?</p>
-                    <p>In the past few months several new apps have let people pay to get reservations at restaurants where tables are in a great demand. Some essentially scalp reservations. With others, like Resy, the restaurants themselves sell reservations.  Are these services a useful way to let people get into popular restaurants, or are they just another way for restaurants to sell something that was once free?</p>
-                    <p>In the past few months several new apps have let people pay to get reservations at restaurants where tables are in a great demand. Some essentially scalp reservations. With others, like Resy, the restaurants themselves sell reservations.  Are these services a useful way to let people get into popular restaurants, or are they just another way for restaurants to sell something that was once free?</p>
-                    <p>In the past few months several new apps have let people pay to get reservations at restaurants where tables are in a great demand. Some essentially scalp reservations. With others, like Resy, the restaurants themselves sell reservations.  Are these services a useful way to let people get into popular restaurants, or are they just another way for restaurants to sell something that was once free?</p>
+
+                    <p>Damn dog is always howling at people
+                        <span class="smile">:)</span> <br/>
+                        Let's make another function to tell him to stop:
+                        <pre class="runnable">
+function shut_up_shiner() {
+    alert("SHINER! HUSH!")
+}
+                        </pre>
+                    </p>
+
+                    <p>Tell him what's up:
+                        <pre class="runnable">shut_up_shiner()</pre>
+                    </p>
+
+                    <p><small>*shiner slinks away &amp; curls up in a chair*</small></p>
+
+                    <section>
+                        <blockquote>
+                            <h3>A less annoying <code>alert()</code></h3>
+                            <p><code>alert()</code> is just function like any other,
+                                but it's one that comes
+                                built-into the web browser. We can call <code>alert()</code> 
+                                anytime we want to display something, but that popup 
+                                window is annoying.</p>
+
+                            <p>Instead &mdash; from here on out &mdash; 
+                                we'll use its less-annoying cousin 
+                                <code>console.log()</code>,
+                                which will display its results in your prompt, 
+                                instead of in an annoying popup window:</p>
+                            <pre class="runnable">console.log("WAT!? O_o")</pre>
+                        </blockquote>
+                    </section>
                 </section>
 
-                <section id="create-a-function" class="has-repl">
-                    <h2>Creating &amp; Calling a Function</h2>
-                    <p>Let's make a function called <code>shinerdog</code> that
-                        prints out "woooof!" every time we call it.</p>
-                    <p>Type this in the prompt on the right (&amp; hit enter):</p>
-                    <pre>
-function shinerdog() {
-    console.log("WOOOOF!")
-}</pre>
-                    <p>Nothing happened! [[MORE WORDS HERE]]</p>
-                    <p>Try typing this into the prompt :
-                        <pre>shinerdog()</pre></p>
-                    <p>Now run it again. And again.
-                        <em>(pro tip: press the up arrow to repeat your last command)</em></p>
-                    <p>In the past few months several new apps have let people pay to get reservations at restaurants where tables are in a great demand. Some essentially scalp reservations. With others, like Resy, the restaurants themselves sell reservations.  Are these services a useful way to let people get into popular restaurants, or are they just another way for restaurants to sell something that was once free?</p>
-                    <p>In the past few months several new apps have let people pay to get reservations at restaurants where tables are in a great demand. Some essentially scalp reservations. With others, like Resy, the restaurants themselves sell reservations.  Are these services a useful way to let people get into popular restaurants, or are they just another way for restaurants to sell something that was once free?</p>
-                    <p>In the past few months several new apps have let people pay to get reservations at restaurants where tables are in a great demand. Some essentially scalp reservations. With others, like Resy, the restaurants themselves sell reservations.  Are these services a useful way to let people get into popular restaurants, or are they just another way for restaurants to sell something that was once free?</p>
-                    <p>In the past few months several new apps have let people pay to get reservations at restaurants where tables are in a great demand. Some essentially scalp reservations. With others, like Resy, the restaurants themselves sell reservations.  Are these services a useful way to let people get into popular restaurants, or are they just another way for restaurants to sell something that was once free?</p>
+                <section id="inputs" class="has-repl">
+                    <h2>Inputs <small>(make functions dance)</small></h2>
+                    <p>That's the basics of creating and calling a function, but so far
+                        our functions are of limited usefulness. A function that just
+                        does the same thing over &amp; over is kind of pointless. ¯\_(ツ)_/¯</p>
+
+                    <p>Let's do something a little more interesting.
+                        Pretend we're organizing a conference, &amp; we want to
+                        make a computer program that will print out name badges
+                        for each of our guests.</p>
+
+                    <p>Based on what we know so far, we could write 
+                        a function that prints <br/>
+                        <tt>Hello, my name is
+                        __________</tt> &mdash; but that's no good. 
+                        This is a fancy conference, so our badges need names, dammit!
+                        Somehow, we have to tell our function the name of each guest, 
+                        so it can print out <br/>
+                        <tt>Hello, my name is Mike Jones</tt> instead.</p>
+                    
+                    <!-- TODO: note that "input" == "argument" || "parameter -->
+                    <p>That's where <strong>inputs</strong> come in. A function can take 
+                        an input, and then use that input in its code.</p>
+                    
+                    <p>Fill in the blank:
+                        <pre class="runnable">
+function print_badge(guest_name) {
+    console.log("Hello, my name is " + <span contenteditable="true">          </span>)
+}
+                        </pre>
+                    </p>
+
+                    <p>Then when you call it, you "pass" the input to it:
+                        <pre class="runnable">
+print_badge("Mike Jones")
+                        </pre>
+                    </p>
+
+                    <p><small>(MIKE JONES! MIKE JONES!)</small></p>
+
+                    <h3>Multiple Inputs</h3>
+                    <p>Functions can also take more than one input (in theory, a function
+                        could take a million inputs, but it would be a pain in the arse).
+                    <p>Let's write another function to help with the conference.
+                        This one will act as our doorman, and greet our guests as they
+                        come in. We'd like him to not only greet them by name, but also
+                        stroke their ego by giving them a compliment.</p>
+                    <p>If the doorman is greeting Mike Jones,
+                        age 37, he should say: <br/>
+                        <tt>Hi there, Mike Jones!</tt><br/>
+                        <tt>You don't look a day over 37!</tt>
+                    </p>
+                    <p>Fill in the missing code:
+                        <pre class="runnable">
+function greet_guest(guest_name, guest_age) {
+    console.log("Hi there, " + <span contenteditable="true">          </span> + "!")
+    console.log(<span contenteditable="true">                                              </span>)
+}
+                        </pre>
+                    </p>
+
+                    <p>Got it? Now say Hi to Mike:
+                        <pre class="runnable">
+greet_guest("Mike Jones", 37)
+                        </pre>
+                    </p>
+
+                    <p>Our doorman sure is friendly, but he's also very stupid. Mike
+                        Jones doesn't look older than 37, because he <em>isn't</em> older
+                        than 37.</p>
+                    <p><em>*sigh*</em> &mdash; Good help is hard to find. But
+                        luckily, unlike people, we can easily make our program smarter 
+                        <span class="smile">:)</span></p>
                 </section>
+
+                <section id="outputs" class="has-repl">
+                    <h2>Outputs <small>(make computer programs "compute" stuff)</small></h2>
+                    <p>Functions are useful for organizing our program, and we can pass
+                        them inputs to make them do different things. Very cool, but
+                        functions still have one big feature we haven't seen.</p>
+
+                    <p>Not only can functions take in inputs, they can also "return"
+                        an output that we can use somewhere else.</p>
+                    
+                    <p>For example, there's a function (built-into the browser) called
+                        <code>Math.round()</code> which will round any number up or down
+                        to the nearest whole number, and "return" the new number.
+                        Here's how we might use it:
+                        <pre class="runnable">
+var not_pi = Math.round(3.14159)
+console.log(not_pi + " is close enough to PI for me!")
+                        </pre>
+                    </p>
+
+                    <p>Pretty simple, but also super-powerful.</p>
+
+                    <h3>Back to the Doorman</h3>
+
+                    <p>OK, let's see if we can make our stupid doorman a little bit
+                        smarter. We want to make our guests feel good, so let's lie to 
+                        them about how young they look. In fact, let's tell them they look
+                        <strong>a decade younger</strong> than they actually are. That'll butter 'em up.
+                        <span class="smile">:)</span></p>
+                        
+                    <p>If Mike Jones is 37, we want 
+                        our doorman to say "You don't look a day over 27!"
+                        Flattery will get you everywhere.
+                    </p>
+
+                    <p>To start with, we'll need a function that takes in a guest's real
+                        age as input, and returns their "fake age" as output.</p>
+                    
+                    <p>A function can "return" a value by using the keyword
+                        &hellip; wait for it &hellip; <code>return</code>. &nbsp;I know, 
+                        <img width=25 src="http://3.bp.blogspot.com/-WpuYGqCEHDg/UBznzaqReKI/AAAAAAAAB_0/0Vc8_mnnhqw/s1600/mind-blown.gif">
+                    </p>
+
+                    <p>Fill in the
+                        blank:
+                        <pre class="runnable">
+function a_decade_less_than(real_age) {
+    return <span contenteditable="true">             </span>
+}
+                        </pre>
+                    </p>
+
+                    <p>And to test it out...
+                        <pre class="runnable">
+console.log( a_decade_less_than(37) )
+                        </pre>
+                    </p>
+
+                    <p>Boosh! Now let's turn our doorman into a lying schmoozer.</p>
+                    
+                    <p>We'll use our same <code>greet_guest</code> function from before,
+                        but this time it will use <code>fake_name()</code> to 
+                        flatter the guest:
+                        <pre class="runnable">
+function greet_guest(guest_name, guest_age) {
+    var fake_age = <span contenteditable="true">                             </span>
+    console.log("<span contenteditable=\"true\"">"Hi there, " + guest_name + "You don't look a day over " + fake_age</span>)
+}
+                        </pre>
+                </section>
+
+                <section class="final-spacer">
+                </section>
+
             </div>
         </div>
 
@@ -68,10 +228,12 @@ function shinerdog() {
 
         <script src="//cdn.jsdelivr.net/jquery/2.1.1/jquery.min.js"></script>
         <!-- <script src="https://rawgit.com/runningskull/jq-console/master/jqconsole.min.js"></script> -->
-        <script src="/jqconsole.min.js"></script>
         <script src="https://rawgit.com/jeresig/jquery.hotkeys/master/jquery.hotkeys.js"></script>
 
         <script src="//cdn.jsdelivr.net/underscorejs/1.6.0/underscore-min.js"></script>
+
+        <script src="/jqconsole.min.js"></script>
+        <script src="/rainbow.min.js"></script>
 
         <script src="https://rawgit.com/runningskull/booter/master/booter.js"></script>
         <script src="/js/main.js"></script>
