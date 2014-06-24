@@ -70,14 +70,13 @@ p {
           inside a <p> results in an empty paragraph, like:
                 <p>...</p><div>...</div><p></p>
 **/
-.inner p:empty + h1,
-.inner p:empty + h2,
 .inner p:empty + h3 {
   margin-top: -10px; }
 
 .smile {
   letter-spacing: 2px;
   font-weight: normal;
+  font-style: normal;
   margin-left: 5px;
   font-size: 0.875em;
   -moz-transform: rotate(90deg) translateX(2px);
@@ -323,6 +322,12 @@ pre.runnable {
 
 .jqconsole-error {
   color: #e74c3c; }
+
+.jqconsole-preloaded {
+  color: #95a5a6; }
+  .jqconsole-blurred .jqconsole-preloaded {
+    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50);
+    opacity: 0.5; }
 
 .jqconsole-prompt,
 .jqconsole-old-prompt,

@@ -8,6 +8,30 @@ var editable_tabindex = 0
 var PAD = 40
 
 
+
+var HISTORIES = {
+  'foreach': [
+    [function print_badge(guest_name) {
+       var str = ' |  Hello, my name is ' + guest_name + '  | '
+         , line1 = ' ┏' + (new Array(str.length - 3)).join('-') + '┓ '
+         , line2 = ' ┗' + (new Array(str.length - 3)).join('-') + '┛ '
+         , pad = ' |' + (new Array(str.length - 3)).join(' ') + '| '
+         , space = (new Array(str.length + 1)).join(' ')
+
+       console.log(line1)
+       console.log(pad)
+       console.log(str)
+       console.log(pad)
+       console.log(line2)
+
+       console.log(space)
+     },
+     'function print_badge(guest_name) { ... }']
+  ]
+}
+
+
+
 $('.runnable').each(make_runnable)
 $('.highlight').each(highlight)
 
@@ -20,6 +44,10 @@ $('.has-repl').each(function(ind, sect) {
     , $repl = repl()
 
   $repl.css('top', $topEl.offset().top)
+
+  if (HISTORIES[$sect.attr('id')]) {
+    preload_history($sect, $repl)
+  }
 
   make_sticky($sect, $topEl, $repl)
   $sect.data('$repl', $repl)
@@ -35,8 +63,9 @@ $('.has-repl').each(function(ind, sect) {
 function make_runnable(ind, code) {
   var $code = $(code)
     , $btn = $('<button class="run-code">&#9654;</button>')
+    , display = $code.css('display')
 
-  $code.wrap('<div style="position:relative">')
+  $code.wrap('<div style="position:relative;display:'+display+';">')
   $code.parent().append($btn)
 
   $code.html($code.html().trim())
@@ -73,13 +102,14 @@ function highlight(ind, code) {
 
 function make_sticky($sect, $topEl, $repl) {
   var T = $topEl.offset().top
-    , B = T + $sect.height() - $topEl.position().top
 
   window.WAT = {}
 
   $doc.on('scroll', function(evt) {
     var ST = $doc.scrollTop()
       , h = $repl.height()
+
+    var B = T + $sect.height() - $topEl.position().top
 
     if (ST < T - PAD) {
       if ($repl.css('position') != 'absolute')
@@ -111,6 +141,19 @@ function make_sticky($sect, $topEl, $repl) {
         .addClass('scrolled-past')
     }
   })
+}
+
+function preload_history($sect, $repl) {
+  var history = HISTORIES[$sect.attr('id')]
+
+  if (history) {
+    $repl.on('repl-ready', function() {
+      history.forEach(function(h) {
+        $repl.__eval__(''+h[0])
+        $repl.__display_history_line__(h[1])
+      })
+    })
+  }
 }
 
 

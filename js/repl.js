@@ -13,12 +13,31 @@ function repl() {
   return $container
 
 
+  /***** ~ *****/
+
 
   function ready(EVAL, ctx) {
     jqconsole = $container.jqconsole(null, '>>> ', '... ', false, false)
 
     evl = EVAL.bind(null, jqconsole, log)
     do_prompt()
+
+    $container.__eval__ = function(str) {
+      var _result = evl(str)
+      log.forEach(_.partial(_write, _, 'jqconsole-output jqconsole-log'))
+      _write(_result)
+      _empty(log)
+    }
+
+    $container.__set_cmd_history__ = function(hist) {
+      jqconsole.SetHistory(hist)
+    }
+
+    $container.__display_history_line__ = function(str) {
+      jqconsole.Write(str + '\n', 'jqconsole-preloaded')
+    }
+
+    $container.trigger('repl-ready')
   }
 
   function do_prompt() {

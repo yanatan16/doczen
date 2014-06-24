@@ -24,6 +24,7 @@ $console-output: #16a085;
 $console-prompt: $console-input;
 $console-error: #e74c3c;
 $console-cursor: #2ecc71;
+$console-preloaded: #95a5a6;
 
 body {
     background: #fff;
@@ -63,8 +64,6 @@ p {
           inside a <p> results in an empty paragraph, like:
                 <p>...</p><div>...</div><p></p>
 **/
-.inner p:empty + h1,
-.inner p:empty + h2,
 .inner p:empty + h3 {
     margin-top: -10px;
 }
@@ -72,6 +71,7 @@ p {
 .smile {
     letter-spacing: 2px;
     font-weight: normal;
+    font-style: normal;
     margin-left: 5px;
     font-size: 0.875em;
 
@@ -333,6 +333,14 @@ pre.runnable {
 
 .jqconsole-error {
     color: $console-error;
+}
+
+.jqconsole-preloaded {
+    color: $console-preloaded;
+
+    .jqconsole-blurred & {
+        @include opacity(0.5);
+    }
 }
 
 .jqconsole-prompt,
