@@ -111,6 +111,9 @@ function make_sticky($sect, $topEl, $repl) {
       , B = T + $sect.height() - $topEl.position().top
 
     if (ST < T - PAD) {
+      // TODO: this check is for speed optimization, but we can
+      //       get off if the content's height changes underneath
+      //       us (for example, a hidden element being shown, etc...)
       if ($repl.css('position') != 'absolute')
         $repl
           .css({
