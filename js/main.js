@@ -190,7 +190,7 @@ function repl() {
   var $container = $('<div class="repl">').appendTo($replContainer)
 
   // load the eval-er into a sandboxed iframe
-  booter.loadScript('/js/eval.js', ['EVAL', '__context__'], ready)
+  booter.loadScript('js/eval.js', ['EVAL', '__context__'], ready)
 
   return $container
 
