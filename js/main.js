@@ -101,15 +101,14 @@ function highlight(ind, code) {
 }
 
 function make_sticky($sect, $topEl, $repl) {
-  var T = $topEl.offset().top
-
   window.WAT = {}
 
   $doc.on('scroll', function(evt) {
     var ST = $doc.scrollTop()
       , h = $repl.height()
 
-    var B = T + $sect.height() - $topEl.position().top
+    var T = $topEl.offset().top
+      , B = T + $sect.height() - $topEl.position().top
 
     if (ST < T - PAD) {
       if ($repl.css('position') != 'absolute')

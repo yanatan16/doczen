@@ -169,7 +169,11 @@ body {
 }
 
 .final-spacer {
-    height: 600px;
+    &:after {
+        content: '';
+        display: block;
+        height: 640px;
+    }
 }
 
 

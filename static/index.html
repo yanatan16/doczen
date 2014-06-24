@@ -257,16 +257,9 @@ function greet_guest(guest_name, guest_age) {
                         <img width=25 src="http://3.bp.blogspot.com/-WpuYGqCEHDg/UBznzaqReKI/AAAAAAAAB_0/0Vc8_mnnhqw/s1600/mind-blown.gif">
                     </p>
 
-                    <p>For example, let's say we have a list of guests attending our
-                        conference:
-                        <pre class="runnable">
-guest_list = ["Mike Jones", "Shiner Dog", "Leroix Jenkins"]
-                        </pre>
-                    </p>
-
-                    <p>Here's an example of how to use <code>forEach</code>. This
-                        will run our old annoying friend <code>alert()</code> <em>for each</em>
-                        thing inside the list:<br/>
+                    <p><code>forEach</code> takes <em>the name of a function</em> as input. Here's an example: 
+                        Remember our old annoying friend, the function called <code>alert</code>?
+                        Here's how you run <code>alert</code> <em>for each</em> thing inside a list:<br/>
                         <small><em>(warning: this will be annoying<span class="smile">P</span> )</em></small>
                         <pre class="runnable">
 var my_list = [1, 2, 3, "shiner"]
@@ -277,23 +270,29 @@ my_list.forEach(alert)
                     <h3>Back to the Conference</h3>
 
                     <p>The conference is coming up soon, so it's time to prepare.
-                        Let's print badges <em>for each</em> guest in our list: 
+                        Let's print badges for each guest in our list:
                         <pre class="runnable">
+<span style="opacity:0.5">// Remember earlier, we created:
+// function print_badge(guest_name) { ... }</span>
+
 var guest_list = [
     "<span contenteditable="true">               </span>",
     "<span contenteditable="true">               </span>",
     "<span contenteditable="true">               </span>"
 ]
 
-<span contenteditable="true">          </span>.<span contenteditable="true">       </span>(print_badge)
+// Print badges for each guest:
+<span contenteditable="true">          </span>.<span contenteditable="true">       </span>(<span contenteditable="true">           </span>)
                         </pre>
                     </p>
 
                     <p>BOOM!</p>
 
                     <p><code>forEach()</code> will come in handy very often, so it's
-                        a good idea to get your head wrapped around it. Continue playing
-                        around on the right side as much as you want.</p>
+                        a good idea to get your head wrapped around it. If you're still a little unclear
+                        on how it works, feel free to play around with it some more, or shoot me (or any dev)
+                        a HipChat message.
+                    </p>
                 </section>
 
                 <section id="recursion" class="has-repl">
@@ -339,7 +338,7 @@ function count_down(x) {
                     <p>Now the puzzle: Can you write a recursive function called <code>fib</code>
                         that calculates a particular number in the sequence?</p>
 
-                    <p>It will start out like this:
+                    <p>Once you've written it, use these to see if it's working correctly:
                         <pre class="runnable highlight">fib(8) // should display 21</pre>
                         <pre class="runnable highlight">fib(10) // should display 55</pre>
                         <pre class="runnable highlight">fib(41) // should display 165580141, after thinking a while</pre>
@@ -357,7 +356,33 @@ function count_down(x) {
                     </p>
                 </section>
 
-                <section class="final-spacer">
+                <section>
+                    <h2>Functions are Cool</h2>
+
+                    <p>We've only scratched the surface of the cool ways we can use
+                        functions. Not only can we write functions that call other
+                        functions and themselves, we can write functions that take other
+                        functions as input, and functions that return
+                        a function (which - in turn - return another function, etc&hellip;).
+                        We can even write functions that take in <em>code</em> as an
+                        input, and then modify the code and/or run it. (The prompt on the
+                        right side is powered by one such function.)
+                    </p>
+
+                    <p>Functions are the backbone of modern programming. As you
+                        continue to program, you'll learn more and more ways
+                        you can use functions. I still learn more to this day.
+                    </p>
+                </section>
+
+                <section class="has-repl final-spacer">
+                    <h2>Keep Playing Around</h2>
+                    <p>You can try different things as much as you want in the prompt on the right.
+                        If you'd prefer, you can also press <code>Cmd + Alt + J</code> to open
+                        up the browser's Developer Tools, where you'll have a full-blown, real-life
+                        development environment (we use the Developer Tools a lot - every day, and
+                        sometimes for hours on end!)
+                    </p>
                 </section>
 
             </div>

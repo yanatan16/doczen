@@ -179,8 +179,10 @@ body {
     width: 586.66667px;
     padding-left: 40px; }
 
-.final-spacer {
-  height: 600px; }
+.final-spacer:after {
+  content: '';
+  display: block;
+  height: 640px; }
 
 /*******************************************************************************
 * Prose
